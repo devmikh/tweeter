@@ -1,0 +1,31 @@
+form {
+  margin-top: 1em;
+  display: flex;
+  flex-direction: column;
+}
+
+textarea {
+  border: none;
+  border-bottom: 3px solid rgb(84,81,73);
+  margin-bottom: 0.8em;
+  resize: none;
+  outline: none;
+  background-color: #f4f1ec;
+}
+
+.new-tweet div {
+  display: flex;
+  justify-content: space-between;
+}
+
+button {
+  color: white;
+  font-family: 'Bungee', cursive;
+  border: none;
+  padding: 0.3em 0.5em;
+  background-color: #4056A1;
+}
+
+output {
+  font-family: 'Bungee', cursive;
+}
