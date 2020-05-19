@@ -1,12 +1,12 @@
 form {
-  margin-top: 1em;
+  margin: 2em 0;
   display: flex;
   flex-direction: column;
 }
 
 textarea {
   border: none;
-  border-bottom: 3px solid rgb(84,81,73);
+  border-bottom: 3px solid #545149;
   margin-bottom: 0.8em;
   resize: none;
   outline: none;
