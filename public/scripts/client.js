@@ -7,8 +7,15 @@
 
 
 $(document).ready(function() {
+
+  const escape = function(str) {
+    let div = document.createElement('div');
+    div.appendChild(document.createTextNode(str));
+    return div.innerHTML;
+  }
+
   // Given a tweet object, creates and returns an HTML element in a string format
-  const createTweetElement = (tweet) => {
+  const createTweetElement = function(tweet) {
     return `<article class="tweet">
             <header>
               <div class='user'>
@@ -24,7 +31,7 @@ $(document).ready(function() {
               </div>
             </header>
             <main>
-              <p>${tweet.content.text}</p>
+              <p>${escape(tweet.content.text)}</p>
             </main>
             <footer>
               <div class='date'>
@@ -43,14 +50,14 @@ $(document).ready(function() {
   * Given an array of tweet objects, creates an HTML element
   * for each of them and appends it to the #tweet-container
   */
-  const renderTweets = (tweetArray) => {
+  const renderTweets = function(tweetArray) {
     for (const tweet of tweetArray) {
       $("#tweet-container").prepend(createTweetElement(tweet));
     }
   }
   
   // Sends a GET request to the server and returns a JSON object
-  const loadTweets = () => {
+  const loadTweets = function() {
     $.getJSON('/tweets')
       .then(function(tweets) {
         renderTweets(tweets);
