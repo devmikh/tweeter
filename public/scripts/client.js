@@ -68,4 +68,14 @@ const data = [
 
 $(document).ready(function() {
   renderTweets(data);
+
+  $('form').submit(function(event) {
+    event.preventDefault();
+
+    const data = $(this).serialize();
+    $.post('/tweets/', data)
+      .then(function(response){
+        console.log("response >>", response);
+      }); 
+  });
 });
