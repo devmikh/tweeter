@@ -71,6 +71,7 @@ $(document).ready(function() {
       $.post('/tweets', data)
       .then(function(response){
         $("#tweet-text").val("");
+        loadTweets();
         console.log("response >>", response);
       });
     }
