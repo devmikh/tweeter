@@ -43,6 +43,12 @@
     <!-- Page-specific (main) content here -->
     <main class="container">
       <section class="new-tweet">
+        <div id='error-too-long' class='error'>
+          <span><i class="fas fa-exclamation-triangle"></i> Too long. Plz rspct our arbitrary limit of 140 characters. #kthxbye. <i class="fas fa-exclamation-triangle"></i></span>
+        </div>
+        <div id='error-no-input' class='error'>
+          <span><i class="fas fa-exclamation-triangle"></i> Plz enter smthg. #kthxbye. <i class="fas fa-exclamation-triangle"></i></span>
+        </div>
         <form method="POST" action="/tweets/">
           <label for="tweet-text">What are you humming about?</label>
           <textarea name="text" id="tweet-text"></textarea>

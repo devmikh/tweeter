@@ -29,3 +29,11 @@ button {
 output {
   font-family: 'Bungee', cursive;
 }
+
+.new-tweet .error {
+  display: none;
+  border: 5px solid red;
+  color: red;
+  padding: 0.5em 1em;
+  margin: 1em 0;
+}

@@ -60,6 +60,7 @@ $(document).ready(function() {
   const loadTweets = function() {
     $.getJSON('/tweets')
       .then(function(tweets) {
+        $("#tweet-container").empty();
         renderTweets(tweets);
       });
   }
@@ -69,10 +70,11 @@ $(document).ready(function() {
   $('form').submit(function(event) {
     event.preventDefault();
     const val = $("#tweet-text").val();
+    $(".error").slideUp();
     if (val.length === 0) {
-      alert("Please enter a message");
+      $('#error-no-input').slideDown();
     } else if (val.length > 140) {
-      alert("Your message is too long");
+      $('#error-too-long').slideDown();
     } else {
       const data = $(this).serialize();
       $.post('/tweets', data)
@@ -80,8 +82,8 @@ $(document).ready(function() {
         $("#tweet-text").val("");
         loadTweets();
         console.log("response >>", response);
+        $(".error").slideUp();
       });
     }
-     
   });
 });
