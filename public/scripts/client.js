@@ -61,11 +61,19 @@ $(document).ready(function() {
 
   $('form').submit(function(event) {
     event.preventDefault();
-
-    const data = $(this).serialize();
-    $.post('/tweets', data)
+    const val = $("#tweet-text").val();
+    if (val.length === 0) {
+      alert("Please enter a message");
+    } else if (val.length > 140) {
+      alert("Your message is too long");
+    } else {
+      const data = $(this).serialize();
+      $.post('/tweets', data)
       .then(function(response){
+        $("#tweet-text").val("");
         console.log("response >>", response);
-      }); 
+      });
+    }
+     
   });
 });
