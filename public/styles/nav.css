@@ -1,19 +1,58 @@
+/* Navbar */
+
 nav {
-  height: 120px;
-  background-color: #4056A1;
-  color: #ffffff;
+  position: fixed;
+  top: 0;
+
   display: flex;
   justify-content: space-between;
   align-items: center;
-  position: fixed;
-  top: 0;
+
   width: 100%;
+  height: 120px;
+  
+  background-color: #4056A1;
+  color: #ffffff;
 }
 
 .logo {
+  margin: 2em 0 1em 2em;
+
+  font-size: 1.5em;
   font-family: 'Bungee', cursive;
 }
 
-nav > * {
-  padding: 1.5em;
+.btn-show {
+  margin: 1.5em 3em;
+
+  cursor: pointer;
+}
+
+/* Arrow style and animations */
+.arrow-down {
+  text-align: center;
+}
+
+.arrow-down::after {
+  content: '';
+
+  position: absolute;
+
+  transform: rotate(45deg);
+  animation: 3s arrow infinite ease;
+
+  border-right: 4px solid #ff0000;
+  border-bottom: 4px solid #ff0000;
+
+  width: 10px;
+  height: 10px;
+}
+
+@keyframes arrow {
+  0%, 100% {
+    top: 75px;
+  }
+  50% {
+    top: 85px;
+  }
 }

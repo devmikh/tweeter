@@ -1,67 +1,83 @@
-.tweet {
+/* Tweet */
+
+.tweet,
+.tweet-header,
+.tweet-user,
+.tweet-footer,
+.tweet:hover .tweet-links {
   display: flex;
+}
+
+.tweet-header,
+.tweet-user {
+  align-items: center;
+}
+
+.tweet-links,
+.tweet-username {
+  display: none;
+}
+
+.tweet {
   flex-direction: column;
+
+  margin: 0 0 3em 0;
   border: 3px solid #545149;
-  margin: 3em 0;
 }
 
 /* Header style */
-.tweet header {
-  display: flex;
+.tweet-header {
   justify-content: space-between;
-  align-items: center;
 }
 
-.tweet .user {
-  display: flex;
-  align-items: center;
-}
-
-.tweet img {
+.tweet-avatar {
   margin: 0.5em;
 }
 
-.tweet .username {
-  display: none;
+.tweet-username {
+  margin: 1em;
+
   font-weight: bold;
   color: #C4CBE3;
-  margin: 1em;
 }
 
 /* Main style */
-.tweet main {
-  width: 98%;
+.tweet-main {
+  margin: 0 auto;
   border-bottom: 3px solid #545149;
+  width: 98%;
 }
 
-.tweet p {
+.tweet-text {
   margin: 1em;
 }
 
 /* Footer style */
-.tweet footer {
-  display: flex;
-  margin-bottom: 0.6em;
+.tweet-footer {
   justify-content: space-between;
+
+  margin-bottom: 0.6em;
 }
 
-.tweet .date {
-  font-size: 0.7em;
+.tweet-date {
   margin: 0 1em;
   padding: 0.5em;
+
+  font-size: 0.7em;
 }
 
-.tweet ul {
+.tweet-links {
   margin: 0 1em;
+
   list-style: none;
-  display: flex;
 }
 
-.tweet li a{
+.tweet-link{
   margin: 0.5em;
+  
   font-size: 0.6em;
-  color: #4056A1;
   text-decoration: none;
+  color: #4056A1;
 }
 
 /* Hover */
@@ -69,6 +85,6 @@
   box-shadow: 10px 10px #C4CBE3;
 }
 
-.tweet:hover .username {
+.tweet:hover .tweet-username {
   display: block;
 }

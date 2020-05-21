@@ -4,10 +4,9 @@
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
 
-
-
 $(document).ready(function() {
 
+  // Helper function to prevent XSS attacks
   const escape = function(str) {
     let div = document.createElement('div');
     div.appendChild(document.createTextNode(str));
@@ -17,30 +16,30 @@ $(document).ready(function() {
   // Given a tweet object, creates and returns an HTML element in a string format
   const createTweetElement = function(tweet) {
     return `<article class="tweet">
-            <header>
-              <div class='user'>
-                <div>
+            <header class="tweet-header">
+              <div class="tweet-user">
+                <div class="tweet-avatar">
                   <img src="${tweet.user.avatars}">
                 </div>
                 <div>
                   <span>${tweet.user.name}</span>
                 </div>
               </div>
-              <div class='username'>
+              <div class='tweet-username'>
                 <span>${tweet.user.handle}</span>
               </div>
             </header>
-            <main>
-              <p>${escape(tweet.content.text)}</p>
+            <main class="tweet-main">
+              <p class="tweet-text">${escape(tweet.content.text)}</p>
             </main>
-            <footer>
-              <div class='date'>
+            <footer class="tweet-footer">
+              <div class="tweet-date">
                 <span>${moment(tweet.created_at).fromNow()}</span>
               </div>
-              <ul>
-                <li><a href="#"><i class="fas fa-flag"></i></a></li>
-                <li><a href="#"><i class="fas fa-retweet"></i></a></li>
-                <li><a href="#"><i class="fas fa-heart"></i></a></li>
+              <ul class="tweet-links">
+                <li><a href="#" class="tweet-link"><i class="fas fa-flag"></i></a></li>
+                <li><a href="#" class="tweet-link"><i class="fas fa-retweet"></i></a></li>
+                <li><a href="#" class="tweet-link"><i class="fas fa-heart"></i></a></li>
               </ul>
             </footer>
           </article>`
@@ -58,41 +57,71 @@ $(document).ready(function() {
   
   // Sends a GET request to the server and returns a JSON object
   const loadTweets = function() {
+
     $.getJSON('/tweets')
       .then(function(tweets) {
         $("#tweet-container").empty();
         renderTweets(tweets);
       });
+
   }
 
+  // Load all tweets from the db and render them
   loadTweets();
 
-  $('#button-display-form').click(function(event) {
+  // Add toggle functionality of the new tweet form
+  $('.btn-show').click(function(event) {
+
     if ($('.new-tweet').is(':visible')) {
       $('.new-tweet').slideUp();
     } else {
       $('.new-tweet').slideDown();
-      $('#tweet-text').focus();
+      $('.new-tweet-textarea').focus();
     }
     
   });
 
-  $('form').submit(function(event) {
+  // Form submission behaviour
+  $('.new-tweet-form').submit(function(event) {
+
+    // Prevent default behaviour of the form upon submission
     event.preventDefault();
-    const val = $("#tweet-text").val();
-    $(".error").slideUp();
+
+    // Remove an error message if any
+    $(".new-tweet-error").slideUp();
+
+    // Get user's input
+    const val = $(".new-tweet-textarea").val();
+
+    // If user didn't enter anything, display appropriate error message
     if (val.length === 0) {
-      $('#error-no-input').slideDown();
+      $('.new-tweet-error-no-input').slideDown();
+    // If user went over the limit of characters, display appropriate error message
     } else if (val.length > 140) {
-      $('#error-too-long').slideDown();
+      $('.new-tweet-error-too-long').slideDown();
+    // If input is validated
     } else {
+      // Serialize input of the form
       const data = $(this).serialize();
+
+      // Make a POST request to /tweets with our serialized input data
       $.post('/tweets', data)
       .then(function() {
-        $("#tweet-text").val("");
+
+        // When the POST request is done
+        // Clear the input field
+        $(".new-tweet-textarea").val("");
+
+        // Set the counter back to 140 characters
+        $('.new-tweet-counter').text(140);
+
+        // Load all tweets from the db (they include our newly created tweet)
         loadTweets();
-        $(".error").slideUp();
+
+        // Remove an error message if any
+        $(".new-tweet-error").slideUp();
       });
     }
+
   });
 });

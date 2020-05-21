@@ -29,39 +29,41 @@
     <!-- Top nav bar (fixed) -->
     <nav>
       <span class="logo">tweeter</span>
-      <div id="button-display-form">
+      <div class="btn-show">
         <span><b>Write</b> a new tweet</span>
         <div class="arrow-down"></div>
       </div>
     </nav>
     <!-- Header -->
-    <header>
+    <header class="header">
       <div>
           <img src="/images/profile-hex.png"> 
       </div>
       <br>
       <div>
-          <h2><b>Mikhail</b> Serebriakov</h2>
+          <h2 class="header-h2"><b>Mikhail</b> Serebriakov</h2>
       </div>
     </header>
     <!-- Page-specific (main) content here -->
-    <main class="container">
+    <main class="main">
+      <!-- Form for creating new tweets -->
       <section class="new-tweet">
-        <div id='error-too-long' class='error'>
-          <span><i class="fas fa-exclamation-triangle"></i> Too long. Plz rspct our arbitrary limit of 140 characters. #kthxbye. <i class="fas fa-exclamation-triangle"></i></span>
+        <div class="new-tweet-error new-tweet-error-too-long">
+          <span><i class="fas fa-exclamation-triangle"></i> Too long. Please respect our arbitrary limit of 140 characters <i class="fas fa-exclamation-triangle"></i></span>
         </div>
-        <div id='error-no-input' class='error'>
-          <span><i class="fas fa-exclamation-triangle"></i> Plz enter smthg. #kthxbye. <i class="fas fa-exclamation-triangle"></i></span>
+        <div class="new-tweet-error new-tweet-error-no-input">
+          <span><i class="fas fa-exclamation-triangle"></i> Please enter something <i class="fas fa-exclamation-triangle"></i></span>
         </div>
-        <form method="POST" action="/tweets/">
+        <form class="new-tweet-form" method="POST" action="/tweets/">
           <label for="tweet-text">What are you humming about?</label>
-          <textarea name="text" id="tweet-text"></textarea>
-          <div>
-            <button type="submit">Tweet</button>
-            <output name="counter" class="counter" for="tweet-text">140</output>
+          <textarea name="text" class="new-tweet-textarea" id="tweet-text"></textarea>
+          <div class="new-tweet-footer">
+            <button type="submit" class="new-tweet-submit">Tweet</button>
+            <output name="counter" class="new-tweet-counter" for="tweet-text">140</output>
           </div>
         </form>
       </section>
+      <!-- Container for all tweets from the database -->
       <section id="tweet-container">
         
       </section>
