@@ -1,3 +1,7 @@
+.new-tweet {
+  display: none;
+}
+
 form {
   margin: 2em 0;
   display: flex;

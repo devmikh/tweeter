@@ -14,3 +14,50 @@ body > header h2 {
   font-weight: normal;
   color: #ffffff;
 }
+
+#button-display-form {
+  cursor: pointer;
+}
+
+.arrow-down {
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.arrow-down::after {
+  content: '';
+  width: 10px;
+  height: 10px;
+  position: absolute;
+  margin: auto;
+  /* top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0; */
+  border-right: 4px solid #ff0000;
+  border-bottom: 4px solid #ff0000;
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+  -webkit-animation: 3s arrow infinite ease;
+  animation: 3s arrow infinite ease;
+}
+
+@-webkit-keyframes arrow {
+  0%, 100% {
+    top: 75px;
+  }
+
+  50% {
+    top: 85px;
+  }
+}
+
+/* @keyframes arrow {
+  0%, 100% {
+    top: 75px;
+  }
+  50% {
+    top: 85px;
+  }
+} */

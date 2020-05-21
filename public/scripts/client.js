@@ -35,7 +35,7 @@ $(document).ready(function() {
             </main>
             <footer>
               <div class='date'>
-                <span>${tweet.created_at}</span>
+                <span>${moment(tweet.created_at).fromNow()}</span>
               </div>
               <ul>
                 <li><a href="#"><i class="fas fa-flag"></i></a></li>
@@ -67,6 +67,16 @@ $(document).ready(function() {
 
   loadTweets();
 
+  $('#button-display-form').click(function(event) {
+    if ($('.new-tweet').is(':visible')) {
+      $('.new-tweet').slideUp();
+    } else {
+      $('.new-tweet').slideDown();
+      $('#tweet-text').focus();
+    }
+    
+  });
+
   $('form').submit(function(event) {
     event.preventDefault();
     const val = $("#tweet-text").val();
@@ -78,10 +88,9 @@ $(document).ready(function() {
     } else {
       const data = $(this).serialize();
       $.post('/tweets', data)
-      .then(function(response){
+      .then(function() {
         $("#tweet-text").val("");
         loadTweets();
-        console.log("response >>", response);
         $(".error").slideUp();
       });
     }
