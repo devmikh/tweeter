@@ -29,23 +29,15 @@ nav {
 }
 
 /* Arrow style and animations */
-.arrow-down {
+.arrow-container {
   text-align: center;
 }
 
-.arrow-down::after {
-  content: '';
-
+.arrow-down {
   position: absolute;
-
-  transform: rotate(45deg);
   animation: 3s arrow infinite ease;
-
-  border-right: 4px solid #ff0000;
-  border-bottom: 4px solid #ff0000;
-
-  width: 10px;
-  height: 10px;
+  
+  color: red;
 }
 
 @keyframes arrow {
