@@ -50,6 +50,7 @@
 
 .tweet-text {
   margin: 1em;
+  word-wrap: break-word;
 }
 
 /* Footer style */
