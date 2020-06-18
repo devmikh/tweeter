@@ -3,7 +3,7 @@
 Tweeter is a simple, single-page Twitter clone.
 
 ## Screenshots
-!["Desctop version"](https://github.com/devmikh/tweeter/blob/master/docs/tweeter-desktop.png?raw=true)
+!["Desktop version"](https://github.com/devmikh/tweeter/blob/master/docs/tweeter-desktop.png?raw=true)
 !["Minimized version"](https://github.com/devmikh/tweeter/blob/master/docs/tweeter-minimized.png?raw=true)
 !["New tweet form"](https://github.com/devmikh/tweeter/blob/master/docs/tweeter-new-form.png?raw=true)
 !["Error message"](https://github.com/devmikh/tweeter/blob/master/docs/tweeter-error.png?raw=true)
